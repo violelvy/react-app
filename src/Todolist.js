@@ -1,7 +1,7 @@
 /*
  * @Author: MonicaWoo
  * @Date: 2020-04-16 08:56:28
- * @LastEditTime: 2020-04-20 09:11:17
+ * @LastEditTime: 2020-04-21 09:16:53
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /wwwww/src/Todolist.js
@@ -47,11 +47,21 @@ class Todo extends Component {
                             // item 每一项对应的内容
                             // index 每一项对应的下标
                             return (
-                                <li
-                                    key={index}
-                                    onClick={this.delValue.bind(this, index)}
-                                    dangerouslySetInnerHTML={{ __html: item }}
-                                ></li>
+                                // 最外层必须使用div包裹起来
+                                <div>
+                                    <TodoItem 
+                                    content={item}
+                                    index={index}
+                                    handleDelete={this.delValue.bind(this)}
+                                    />
+                                    {/* 父组件向子组件传递内容的时候， 通过属性形式传递*/}
+                                    {/*<li
+                                            key={index}
+                                            onClick={this.delValue.bind(this, index)}
+                                            dangerouslySetInnerHTML={{ __html: item }}
+                                        ></li>
+                                    */}
+                                </div>
                             )
                         })
                     }
